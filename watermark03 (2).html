@@ -1,0 +1,374 @@
+<html>
+<head>
+  <meta charset="utf-8">  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <style>
+
+@media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    /*.Chrome div:not(*:root) {
+      display: none;
+    }
+  .Chrome:not(*:root):after {
+    content: "Please view on Firefox borwser";
+    font-size:30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   }*/
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.video-selected {
+  width: 100%;
+  /*max-width: 640px;*/
+  margin: 0 auto;
+  /*padding-top: 75% !important; */
+      padding-top: 94vh !important;
+  }
+        
+.video-selected {
+  position: relative;
+  /*padding-bottom: 75%; */
+/*   padding-top: 30px; */
+  height: 0;
+  /*margin-bottom: 10px;*/
+  /*max-width: 640px;*/
+  width: 100%;
+  /*padding-bottom: 56.25%;*/
+  /*height: 480px; */
+}
+.video-iframe {
+  height: 100vh;
+}        
+.video-iframe iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /*height: 100%;*/
+  height: 96vh;
+}
+        
+.video-thumbnails {
+  margin: 0 auto;
+  padding: 0;
+  margin: 10px -8px;
+  font-size: 0;
+}
+
+.video-thumb {
+  /*min-height: 200px;*/
+  height: auto;
+  width: 25%;
+  display: inline-block;
+  vertical-align: top;  
+}
+@media only screen and (max-width: 799px) {
+  .video-thumb {
+    width: 33.33%;
+  } 
+}
+@media only screen and (max-width: 680px) {
+  .video-thumb {
+    width: 50%;
+  } 
+}
+
+.video-thumb img {
+  background-color: #d8d9da;
+  width: 100%;
+  height: 100px;
+}
+
+.video-thumb iframe {
+  display: none;
+}
+
+.video-thumb,
+.video-selected {
+  padding: 8px;
+}
+
+.video-thumb p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.video-thumb p.name {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.active {
+  box-shadow: 0 0 2px #898989;
+}
+
+/* ----------------------------- */
+
+.video-selected{
+  position: relative;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+  transform: rotate(90deg);
+
+  transform-origin: bottom left;
+  width: 100vh;
+  height: 100vw;
+  margin-top: -100vw;
+  object-fit: cover;
+
+  z-index: 4;
+  visibility: visible;
+}
+
+video::-webkit-media-controls-fullscreen-button{
+    display: none !important;
+}
+
+.fullscreen-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.watermark {
+    position: absolute;
+    /*left: 0; 
+    top: 0;*/
+    padding: 1%;
+    margin: 3%;
+    color: white;
+    /*animation: 15s moving-watermark infinite;*/
+    background-color: #00000060;
+    width: fit-content;
+}
+
+.video-container {
+  /*padding-bottom: 56.25%;*/
+  height: 0;
+  /*overflow: hidden;*/
+  position: relative;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.watermark.one {left: 50%; top: 50%; transform: translate(-50%, -50%);}
+.watermark.two   {right: 0; left: auto; top: 81%; transform: translateY(-50%);}
+.watermark.three {left: 0px; right: 0px; margin-left: auto; margin-right: auto; top: 0;}
+.watermark.four  {left: 0; top: 81%; transform: translateY(-50%); }
+.watermark.five {right: 0; left: auto; top: 0%;}
+.watermark.six   {left: 0%; top: 50%; transform: translateY(-50%);}
+.watermark.seven {left: 0px; right: 0px; margin-left: auto; margin-right: auto; top:81%;}
+.watermark.eight  {right: 0; left: auto; top: 50%; transform: translateY(-50%);}
+.watermark.nine   {left: 0px; top: 0%;}
+
+
+</style>
+
+
+
+</head>
+<body>
+<div class="container video-container" >
+  <div class="col-md-12">
+    <div class="col-md-12 video-selected" id="vid-cont">
+      <div class="video-iframe">
+        <iframe width="640" height="352" src="https://www.youtube.com/embed/TpnPzrvJp3Y?rel=0" frameborder="0" allowfullscreen></iframe>
+        <i class="watermark">Username: gra.invest78@gmail.com</i>
+    <button class="fullscreen-button" onclick="toggleFullscreen()">Toggle Fullscreen</button>
+      </div>
+    </div>
+    <div class="col-md-12 video-thumbnails">
+
+      <div class="video-thumb col-md-3">
+        <img src="test.png">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/TpnPzrvJp3Y?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div class="video-thumb col-md-3">
+        <img src="test.png">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/sFcUVK6XupY?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div class="video-thumb col-md-3">
+        <img src="">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/mLwqW8cG8aA?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video-thumb col-md-3">
+        <img src="test.png">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/f9c2ETBgJx8?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+
+      <div class="video-thumb col-md-3">
+        <img src="test.png">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/TpnPzrvJp3Y?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div class="video-thumb col-md-3">
+        <img src="test.png">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/sFcUVK6XupY?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div class="video-thumb col-md-3">
+        <img src="">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/mLwqW8cG8aA?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video-thumb col-md-3">
+        <img src="test.png">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/f9c2ETBgJx8?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+
+      <div class="video-thumb col-md-3">
+        <img src="test.png">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/TpnPzrvJp3Y?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div class="video-thumb col-md-3">
+        <img src="test.png">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/sFcUVK6XupY?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div class="video-thumb col-md-3">
+        <img src="">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/mLwqW8cG8aA?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video-thumb col-md-3">
+        <img src="test.png">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/f9c2ETBgJx8?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+
+      <div class="video-thumb col-md-3">
+        <img src="test.png">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/TpnPzrvJp3Y?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div class="video-thumb col-md-3">
+        <img src="test.png">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/sFcUVK6XupY?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div class="video-thumb col-md-3">
+        <img src="">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/mLwqW8cG8aA?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video-thumb col-md-3">
+        <img src="test.png">
+        <iframe class="iframe" width="640" height="352" src="https://www.youtube.com/embed/f9c2ETBgJx8?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+window.onmessage = (event) => {
+   if(event.data){
+		var txt = event.data;
+		document.getElementsByClassName('watermark')[0].innerHTML = txt;
+   }  
+};
+
+(function addBrowserClass() {
+
+  let bodyEl = document.querySelector("body");
+  let className = "";
+  if (
+    (navigator.userAgent.indexOf("Opera") ||
+      navigator.userAgent.indexOf("OPR")) != -1
+  ) {
+    className = "Opera";
+  } else if (navigator.userAgent.indexOf("Chrome") != -1) {
+    className = "Chrome";
+  } else if (navigator.userAgent.indexOf("Safari") != -1) {
+    className = "Safari";
+  } else if (navigator.userAgent.indexOf("Firefox") != -1) {
+    className = "Firefox";
+  } else if (
+    navigator.userAgent.indexOf("MSIE") != -1 ||
+    !!document.documentMode == true
+  ) {
+    //IF IE > 10
+    className = "IE";
+    bodyEl.classList.add("IE");
+  }
+  bodyEl.classList.add(className);
+})();
+
+
+$(".video-thumb").click(function() {
+  $('.video-thumb > img').removeClass("active");
+  $(this).children('img').addClass("active");
+});
+
+$('div.video-thumb').click(function() {
+  $('.video-iframe iframe').attr('src', ($(this).children('iframe').attr('src').replace('iframe')));
+});
+
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.getElementById('vid-cont').requestFullscreen();
+    } else if (document.exitFullscreen) {
+        document.exitFullscreen(); 
+    }
+}
+
+
+  // Rotator Index
+  var x = 0;
+  // Image array
+  var images = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  let previousClass='';
+  // Fade class in/out based on a timer
+  function changeImage() {
+    
+    $('.watermark').delay(0).fadeOut(1000, function(){
+      if($(this).hasClass(previousClass)){
+        $(this).removeClass(previousClass);
+      }
+      previousClass=images[x];
+      $(this).addClass(images[x])
+      // $(this).attr('class', images[x++]);
+      $(this).delay(0).fadeIn(1000);
+      // x = x % images.length;
+      if(images.length!==x){
+        x++;
+      }else{
+        x=0;
+      }
+    });
+  }
+  // The timer
+  changeImage();
+  setInterval(changeImage, 20000); // Interval
+
+</script>
+</body>
+</html>
